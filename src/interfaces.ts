@@ -99,6 +99,10 @@ export interface XMLBuilderOptions {
    * Defines custom parser functions.
    */
   parser: ParserOptions | undefined
+  /**
+   * Defines a custom text sanitizer for text nodes.
+   */
+  sanitizer: ((str: string) => string) | undefined
 }
 
 /**
@@ -136,7 +140,8 @@ export const DefaultBuilderOptions: XMLBuilderOptions = {
     xlink: "http://www.w3.org/1999/xlink"
   },
   invalidCharReplacement: undefined,
-  parser: undefined
+  parser: undefined,
+  sanitizer: undefined
 }
 
 /**

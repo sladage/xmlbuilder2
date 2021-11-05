@@ -260,7 +260,9 @@ export class XMLBuilderImpl implements XMLBuilder {
     }
 
     const child = this._doc.createTextNode(
-      sanitizeInput(content, this._options.invalidCharReplacement))
+      this._options.sanitizer
+        ? this._options.sanitizer(content)
+        : sanitizeInput(content, this._options.invalidCharReplacement))
     this.node.appendChild(child)
 
     return this
